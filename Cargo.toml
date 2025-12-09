@@ -1,0 +1,11 @@
+[package]
+name = "pbn"
+version = "0.1.0"
+edition = "2024"
+description = "Programming by Navigation types and traits"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/justinlubin/pbn-rs"
+categories = ["data-structures"]
+keywords = ["navigation", "interactive", "synthesis"]
+
+[dependencies]
