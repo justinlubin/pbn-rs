@@ -170,9 +170,14 @@ impl<T: Timer, S: Step> Controller<T, S> {
         self.state = step.apply(&self.state).unwrap();
     }
 
-    /// Returns the current working expression
+    /// Returns a reference to the current working expression
     pub fn working_expression(&self) -> &S::Exp {
         &self.state
+    }
+
+    /// Returns the current working expression and drops self
+    pub fn end(self) -> S::Exp {
+        self.state
     }
 
     /// Returns whether or not the current working expression is valid
