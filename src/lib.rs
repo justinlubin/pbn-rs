@@ -167,6 +167,14 @@ impl<T: Timer, S: Step> Controller<T, S> {
             None => (),
             Some(his) => his.push(self.state.clone()),
         };
+        self.decide_without_history(step);
+    }
+
+    /// Decide which step to take *without* adding to the history of steps,
+    /// even if the controller was instantiated with `save_history` to `false`
+    /// (**must** be selected from among the ones that are provided by the
+    /// [`provide`] function)
+    pub fn decide_without_history(&mut self, step: S) {
         self.state = step.apply(&self.state).unwrap();
     }
 
