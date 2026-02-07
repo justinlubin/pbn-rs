@@ -45,7 +45,7 @@ pub trait ValidityChecker {
     type Exp;
 
     /// Returns whether or not the expression is valid
-    fn check(&self, e: &Self::Exp) -> bool;
+    fn check(&mut self, e: &Self::Exp) -> bool;
 }
 
 /// The interface for step providers
@@ -189,7 +189,7 @@ impl<T: Timer, S: Step> Controller<T, S> {
     }
 
     /// Returns whether or not the current working expression is valid
-    pub fn valid(&self) -> bool {
+    pub fn valid(&mut self) -> bool {
         self.checker.check(&self.state)
     }
 
